@@ -1,0 +1,23 @@
+{
+    "name": "socketio",
+    "authors": [
+        "Edgar <erre@gft.com>"
+    ],
+    "description": "ejemplo socket",
+    "main": "",
+    "license": "MIT",
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "devDependencies": {
+        "angular": "^1.5.8",
+        "angular-ui-router": "^0.3.1",
+        "angular-material": "^1.1.1",
+        "jQuery": "^3.1.1"
+    }
+}

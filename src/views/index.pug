@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title Socket.IO chat
+        link( rel="stylesheet" href='css/main.css')
+    body
+        ul#messages
+        form(action='')
+            input#m(autocomplete='off')
+            button Send
+        script(src='/socket.io/socket.io.js')
+        //- script(src='http://code.jquery.com/jquery-1.11.1.js')
+        script(src="bower_components/jQuery/dist/jquery.min.js")
+        script(src="bower_components/angular/angular.min.js")
+        script(src="bower_components/angular-ui-router/release/angular-ui-router.min.js")
+        script(src="bower_components/angular-material/angular-material.min.js")
+
+
+        script(src='script/all.js')
+        script.
+            var socket = io();
+
+            $('form').submit(function(){
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;
+            });
+
+            socket.on('chat message', function(msg){
+                console.log(msg);
+                $('#messages').append($('<li>').text(msg));
+            });
+
+            socket.on('hi', function(msg){
+                $('#messages').append($('<li>').text(msg));
+            });
