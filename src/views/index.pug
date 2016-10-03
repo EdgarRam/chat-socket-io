@@ -2,18 +2,20 @@ doctype html
 html
     head
         title Socket.IO chat
+        link( href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
         link( rel="stylesheet" href='css/main.css')
-    body
-        ul#messages
-        form(action='')
-            input#m(autocomplete='off')
-            button Send
+        link( rel="stylesheet" href='bower_components/angular-material/angular-material.min.css')
+    body( ng-app="socketChat" )
+        div( ui-view="" )
+
         script(src='/socket.io/socket.io.js')
         //- script(src='http://code.jquery.com/jquery-1.11.1.js')
-        script(src="bower_components/jQuery/dist/jquery.min.js")
-        script(src="bower_components/angular/angular.min.js")
-        script(src="bower_components/angular-ui-router/release/angular-ui-router.min.js")
-        script(src="bower_components/angular-material/angular-material.min.js")
+        script( src= 'bower_components/jQuery/dist/jquery.min.js' )
+        script( src= 'bower_components/angular/angular.min.js' )
+        script( src= 'bower_components/angular-ui-router/release/angular-ui-router.min.js' )
+        script( src= 'bower_components/angular-animate/angular-animate.min.js' )
+        script( src= 'bower_components/angular-aria/angular-aria.min.js' )
+        script( src='bower_components/angular-material/angular-material.min.js' )
 
 
         script(src='script/all.js')
@@ -33,4 +35,5 @@ html
 
             socket.on('hi', function(msg){
                 $('#messages').append($('<li>').text(msg));
+                console.log(msg);
             });

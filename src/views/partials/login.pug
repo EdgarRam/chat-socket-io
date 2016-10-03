@@ -1,0 +1,17 @@
+div.container-main-sign
+    div.container-signin
+        div.title
+            div.text El mejor chat
+        div.user-data
+            md-input-container.md-block
+                label Nombre de usuario
+                md-icon account_circle
+                input( type="text" ng-model="user.username" )
+
+            md-input-container.md-block( flex-gt-sm="" )
+                label Contraseña
+                md-icon vpn_key
+                input( type="password" ng-model="user.password" )
+
+        div.buttons
+            md-button.md-raised.md-primary(ng-click="login()") Iniciar sesión

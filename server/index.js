@@ -1,54 +1,43 @@
-// var app = require('express')();
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
-//
-// app.get('/', function(req, res){
-//     res.sendFile( __dirname + '/index.html');
-// });
-//
-// http.listen(3010, function(){
-//     console.log('listening on http://localhost:3010');
-// });
+
+/**
+ * Module dependencies.
+ */
+
+var express = require('express');
+var app = express();
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var path = require('path');
 
 
+// all environments
+app.set('port', process.env.PORT || 3000);
+// app.set('views', path.join(__dirname, 'src/views'));
+// app.set('view engine', 'pug');
+app.use( express.favicon() );
+app.use( express.logger('dev') );
+app.use( express.json() );
+app.use( express.urlencoded() );
+app.use( express.methodOverride() );
 
-var app = require('http').createServer( handler );
-var io = require('socket.io')(app);
-var fs = require('fs');
+app.use( express.cookieParser() );
+app.use( express.session({secret: 'abcd1234'}) );
 
-app.listen(3010, "0.0.0.0");
+app.use( express.static( path.join(__dirname, '/../build') ));
 
-function handler (req, res) {
-    var method = req.method.toLowerCase()
-    var url = req.url
-
-
-    console.log( url );
-
-    if( method === "get" && url === "/" ){
-        fs.readFile(__dirname + '/../build/index.html',
-        function (err, data) {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading index.html');
-            }
-
-            res.writeHead(200);
-            res.end(data);
-        });
-    }
-    else{
-        fs.readFile(__dirname + '/../build'+url,
-        function (err, data) {
-            if (err) {
-                return res.writeHead(404);
-            }
-
-            res.writeHead(200);
-            res.end(data);
-        });
-    }
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
 }
+
+app.get('/', function(req, res) {
+    res.sendfile( 'index.html' );
+});
+
+http.listen(3010, function(){
+  console.log('Express server listening on port ' + 3010);
+});
 
 
 io.on('connection', function(socket){
@@ -62,7 +51,5 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(msg){
         io.emit('chat message', "close");
     });
-
-
 
 });
