@@ -2,15 +2,15 @@
 	'use strict';
 
 
-	function signCtrl ( $scope ) {
-		function setup () {}
+	function signCtrl ( $scope, $state, socketIoSrv ) {
 
-		$scope.login = function(){
-			alert("nooo")
+		function setup () {
+			socketIoSrv.on( 'chat', () => $state.go('chat') );
 		}
 
-
-
+		$scope.login = () =>{
+			socketIoSrv.emit( 'adduser' , 'edgar')
+		}
 
 		setup()
 	}

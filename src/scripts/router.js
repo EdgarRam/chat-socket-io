@@ -5,13 +5,22 @@
     const RouteConfig = ( $stateProvider, $urlRouterProvider ) => {
 
 
-        $urlRouterProvider.otherwise( '/app/start' )
+        $urlRouterProvider.otherwise( '/start' )
 
 
         $stateProvider
             .state( 'start', {
-                url: '/app/start',
+                url: '/start',
                 templateUrl: 'partials/login.html',
+                controller: 'signCtrl'
+            } )
+
+
+
+            .state( 'chat', {
+                url: '/chat',
+                templateUrl: 'partials/chat.html',
+                controller: 'chatCtrl'
             } )
 
 

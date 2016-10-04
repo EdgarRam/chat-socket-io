@@ -1,14 +1,17 @@
-
 /**
- * Module dependencies.
- */
+    ** Module dependencies.
+**/
 
+var redis = require('redis');
 var express = require('express');
 var app = express();
 
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
+
+var rooms = ['Lobby'];
+var usernames = {};
 
 
 // all environments
@@ -31,25 +34,38 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', function(req, res) {
+app.get( '/', (req, res) => {
     res.sendfile( 'index.html' );
 });
 
-http.listen(3010, function(){
-  console.log('Express server listening on port ' + 3010);
-});
+http.listen(3010, () =>
+  console.log('Express server listening on port ' + 3010)
+)
 
 
-io.on('connection', function(socket){
-    io.emit('hi', 'everyone');
+io.on('connection', (socket) => {
 
-    socket.on('chat message', function(msg){
-        io.emit('chat message', msg);
-    });
+    socket.on('adduser', ( _username ) =>{
+        socket.username = _username
+        socket.room = 'Lobby'
+        usernames[username] = username;
+        socket.join('Lobby');
+        socket.emit('chat', 'SERVER', 'you have connected to Lobby');
+
+    })
+
+    socket.on( 'init chat', () =>{
+        socket.emit('welcome user', 'hola ' + socket.username );
+        socket.emit('updaterooms', rooms, 'Lobby');
+    })
+
+    socket.on('chat message', ( id, msg ) =>{
+        socket.emit('chat message', msg)
+    })
 
 
-    socket.on('disconnect', function(msg){
-        io.emit('chat message', "close");
-    });
+    socket.on('disconnect', ( msg ) => {
+        socket.emit('chat message', "close" + socket.username );
+    })
 
 });
