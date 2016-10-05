@@ -5,6 +5,7 @@ module.exports = ( config ) => {
    config.modules.gulp.task('stylus', ( ) =>
        config.modules.gulp
        .src( config.foldersPath.stylus.main )
+       .pipe( config.modules.plumber())
        .pipe(  config.modules.stylus({
            compress: true
         }))
