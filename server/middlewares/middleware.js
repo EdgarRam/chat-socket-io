@@ -14,7 +14,7 @@ module.exports = ( app, express ) =>{
     app.use( bodyParser.json() )
     app.use( methodOverride() )
     app.use( bodyParser.urlencoded({ extended: true }) )
-    app.use( express.static( path.join( __dirname, '/../build' ) ))
+    app.use( express.static( path.join( __dirname, '/../../build' ) ))
 
     // development only
     if ('development' == app.get( 'env' ) ) {
@@ -22,8 +22,11 @@ module.exports = ( app, express ) =>{
             if ( res.headersSent ) {
                 return next(err)
             }
-            res.status(500)
-            res.render('error', { error: err })
+            res.status( err.status || 500 )
+            res.send({
+                message: err.message,
+                error: err
+            })
         })
     }
 

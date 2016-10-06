@@ -11,7 +11,7 @@ module.exports = ( config ) => {
             presets: ['es2015']
         }))
         .pipe( config.modules.concat('all.js'))
-        .pipe( config.modules.sourcemaps.write('.'))
+        // .pipe( config.modules.sourcemaps.write('.'))
         .pipe( config.modules.gulp.dest( `${config.foldersPath.build}/script` ) )
    )
 

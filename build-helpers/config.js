@@ -14,10 +14,8 @@ config.modules = {
 	rename : require('gulp-rename'),
 	stylus : require('gulp-stylus'),
 	sync : require('gulp-sync')(require('gulp')),
-	uglify : require('gulp-uglify'),
     babel : require('gulp-babel'),
     clean : require('gulp-clean'),
-    sourcemaps : require('gulp-sourcemaps'),
 	nodemon: require('gulp-nodemon')
 };
 

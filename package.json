@@ -3,11 +3,18 @@
   "version": "0.0.1",
   "description": "my first socket.io app",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "express-sessions": "^1.0.6",
     "method-override": "^2.3.6",
     "mongoose": "^4.6.2",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
@@ -23,11 +30,8 @@
     "gulp-plumber": "^1.1.0",
     "gulp-pug": "^3.0.4",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.5.0",
     "gulp-sync": "^0.1.4",
-    "gulp-uglify": "^1.5.4",
-    "redis": "^2.6.2",
     "require-dir": "^0.3.0",
     "socket.io": "^1.4.8"
   }
