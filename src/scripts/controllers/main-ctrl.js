@@ -2,10 +2,10 @@
 	'use strict';
 
 
-	function mainCtrl ( $scope, $state, socketIoSrv ) {
+	function mainCtrl ( $scope ) {
 
 		function setup () {
-            socketIoSrv.emit( 'getUser' )
+            $scope.model = {}
 		}
 
 

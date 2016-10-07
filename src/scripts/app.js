@@ -8,7 +8,8 @@
 
     angular.module( 'socketChat',  [
         'ui.router',
-        'ngMaterial',
+        'ui.bootstrap',
+
         'socketChat.controllers',
         'socketChat.services'
     ] )

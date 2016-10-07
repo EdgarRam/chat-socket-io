@@ -11,7 +11,9 @@ const favicon = require( 'serve-favicon' )
 const middlewares = require( './middlewares/middleware' )
 const routes = require( './router/router' )
 const port = process.env.PORT || 3000
+const db = require( './db/database' )
 
+db()
 // var rooms = [ 'Lobby' ]
 // var usernames = {}
 
@@ -23,6 +25,5 @@ middlewares( app, express );
 routes( app )
 
 
-http.listen( port, '0.0.0.0', () =>
-    console.log( 'Express server listening on port ' + port )
-)
+http.listen( port, '0.0.0.0' )
+console.log('The magic happens on port ' + port);

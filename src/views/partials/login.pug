@@ -1,17 +1,29 @@
-div.container-main-sign
-    div.container-signin
-        div.title
-            div.text El mejor chat
-        div.user-data
-            md-input-container.md-block
-                label Nombre de usuario
-                md-icon account_circle
-                input( type="text" ng-model="user.username" )
+div.container-main-sign.col-xs-12
+    div.singin.col-xs-6
+        h1 Iniciar
 
-            md-input-container.md-block( flex-gt-sm="" )
-                label Contraseña
-                md-icon vpn_key
-                input( type="password" ng-model="user.password" )
+        form( ng-submit="signin()" )
+            div.form-group
+                label(for='email') Email
+                input#email.form-control(type='email', placeholder='Email' ng-model="user.mail" )
+            div.form-group
+                label(for='password') Contraseña
+                input#password.form-control(type='password', placeholder='Contraseña' ng-model="user.pass")
+            button.btn.btn-default(type='submit') Submit
 
-        div.buttons
-            md-button.md-raised.md-primary(ng-click="login()") Iniciar sesión
+    div.singup.col-xs-6
+        h1 Registrate
+        form( ng-submit="singup()" )
+            div.form-group
+                label(for='name') Nombre
+                input#name.form-control(type='text', placeholder='Nombre' ng-model="user.name")
+            div.form-group
+                label(for='last-name') Apellidos
+                input#last-name.form-control(type='text', placeholder='Password' ng-model="user.lastName")
+            div.form-group
+                label(for='email2') Email
+                input#email2.form-control(type='email', placeholder='ejemplo@dominio' ng-model="user.mail2")
+            div.form-group
+                label(for='password2') Contraseña
+                input#password2.form-control(type='password', placeholder='Contraseña' ng-model="user.pass2")
+            button.btn.btn-default(type='submit') Submit

@@ -2,6 +2,11 @@ const morgan = require( 'morgan' )
 const bodyParser = require ( 'body-parser' )
 const methodOverride = require( 'method-override' )
 const path = require( 'path' )
+const cookieParser = require('cookie-parser')
+const passport = require('passport')
+const flash    = require('connect-flash')
+const session      = require('express-session')
+
 
 
 module.exports = ( app, express ) =>{
@@ -15,6 +20,7 @@ module.exports = ( app, express ) =>{
     app.use( methodOverride() )
     app.use( bodyParser.urlencoded({ extended: true }) )
     app.use( express.static( path.join( __dirname, '/../../build' ) ))
+    app.use(cookieParser())
 
     // development only
     if ('development' == app.get( 'env' ) ) {
@@ -30,4 +36,20 @@ module.exports = ( app, express ) =>{
         })
     }
 
+
+
+
+    // required for passport
+    app.use(session({
+        secret: 'ilovescotchscotchyscotchscotch',
+        resave: true,
+        saveUninitialized: true,
+    })) // session secret
+    app.use(passport.initialize())
+    app.use(passport.session()) // persistent login sessions
+    app.use(flash())
+
+
+
+     require('../auth/passport')(passport);
 }
