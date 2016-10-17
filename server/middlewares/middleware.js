@@ -19,7 +19,8 @@ module.exports = ( app, express ) =>{
     app.use( bodyParser.json() )
     app.use( methodOverride() )
     app.use( bodyParser.urlencoded({ extended: true }) )
-    app.use( express.static( path.join( __dirname, '/../../build' ) ))
+    // app.use( express.static( path.join( __dirname, '/../../build' ) ))
+    app.use( '/components', express.static( path.join( __dirname, '/../../build' ) ))
     app.use(cookieParser())
 
     // development only

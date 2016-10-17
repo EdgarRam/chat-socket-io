@@ -9,7 +9,7 @@ module.exports = ( config ) => {
        .pipe( config.modules.pug({
            pretty: true
        }) )
-       .pipe( config.modules.gulp.dest( config.foldersPath.build ) )
+       .pipe( config.modules.gulp.dest( `${config.foldersPath.build}/views` ) )
    )
 
 }

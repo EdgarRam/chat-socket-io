@@ -11,6 +11,14 @@ div.container-main-sign.col-xs-12
                 input#password.form-control(type='password', placeholder='Contraseña' ng-model="user.pass")
             button.btn.btn-default(type='submit') Submit
 
+            a.btn.btn-primary(href='/auth/facebook')
+                span.fa.fa-facebook Facebook
+
+            a.btn.btn-primary(href='/auth/twitter')
+                span.fa.fa-facebook Twitter
+
+
+
     div.singup.col-xs-6
         h1 Registrate
         form( ng-submit="singup()" )

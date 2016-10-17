@@ -1,5 +1,5 @@
 ( () => {
-	'use strict';
+	'use strict'
 
 
 	const signCtrl = ( $scope, $http ) => {
@@ -22,7 +22,10 @@
 				console.log(response)
 			}, function errorCallback(response) {
 				console.log(response)
-			});
+			})
+
+
+
 		}
 
 		$scope.singup = () =>{
@@ -32,7 +35,7 @@
 				"email": $scope.user.mail2,
 				"password": $scope.user.pass2
 			}
-			console.table( data )
+
 			$http({
 				method: 'POST',
 				url: '/signup',
@@ -41,7 +44,7 @@
 				console.log(response)
 			}, function errorCallback(response) {
 				console.log(response)
-			});
+			})
 		}
 
 

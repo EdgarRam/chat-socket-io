@@ -4,11 +4,17 @@ module.exports = ( app ) =>{
 
     app.route('/profile')
         .get(function(req, res) {
-            res.send( 'profile get' )
+            res.json( { 'msg':'profile get'} )
         })
         .post(function(req, res) {
-            res.send( 'profile post' )
+            res.json( { 'msg':'profile post'} )
         })
+
+    app.route('/profile-redirect')
+        .get(function(req, res) {
+            res.redirect( '/profile')
+        })
+
 
 
 }
